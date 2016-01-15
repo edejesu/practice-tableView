@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HE1-W8-Kbc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p3t-oS-Nbx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p3t-oS-Nbx">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -52,8 +53,23 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="p3t-oS-Nbx" secondAttribute="trailing" id="31d-cx-U2b"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="p3t-oS-Nbx" secondAttribute="bottom" id="7Nh-Uy-tI1"/>
+                            <constraint firstItem="p3t-oS-Nbx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8Sy-4K-cmV"/>
+                            <constraint firstItem="p3t-oS-Nbx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8VG-qX-YXd"/>
+                            <constraint firstItem="p3t-oS-Nbx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="FvO-J2-Zzo"/>
+                            <constraint firstItem="p3t-oS-Nbx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bMp-Fz-Paf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p3t-oS-Nbx" secondAttribute="trailing" id="ghx-ze-crr"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wKZ-gc-79e"/>
+                    <navigationItem key="navigationItem" id="wKZ-gc-79e">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="PK9-Rj-VFU">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="fq5-ax-nKS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="myTableView" destination="p3t-oS-Nbx" id="7cd-G9-CWG"/>
