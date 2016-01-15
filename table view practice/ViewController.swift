@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var myTableView: UITableView!
     var superheros = ["batman", "superman", "aquaman", "wonderwoman", "the flash", "the dirty bubble"]
     var realNames = ["brunce wayne", "clark kent", "authur curry", "dianna", "barry allen", "brown bubble"]
@@ -20,6 +21,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // set tablesource data source & delegate to view controller
         myTableView.dataSource = self
         myTableView.delegate = self
+        editButton.tag = 0
+    }
+    //allows you to edit the order of the tableview
+    @IBAction func editButtonTapped(sender: UIBarButtonItem)
+    {
+        if editButton.tag == 0
+        {
+            myTableView.editing = true
+            editButton.tag = 1
+        }
+        else
+        {
+            myTableView.editing = false
+            editButton.tag = 0
+        }
     }
     //allows you to add a new superhero to tableview
     @IBAction func addButtonTapped(sender: UIBarButtonItem)
@@ -83,5 +99,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             //reloads everything
         }
     }
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+     return true
+    }
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
+    {
+        let superhero = superheros[sourceIndexPath.row] //whichever row you grabbed
+        superheros.removeAtIndex(sourceIndexPath.row)
+        superheros.insert(superhero, atIndex: destinationIndexPath.row) //puts it where you dropped it
+        let alias = realNames[sourceIndexPath.row] //whichever row you grabbed
+        realNames.removeAtIndex(sourceIndexPath.row)
+        realNames.insert(alias, atIndex: destinationIndexPath.row) //puts it where you dropped it
+
+    }
 }
+
+
+
+
+
+
+
 
